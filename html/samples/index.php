@@ -1,5 +1,10 @@
 <?php
+require_once '../vendor/autoload.php';
 require_once '../lib/pdo.php';
+
+use Carbon\Carbon;
+
+echo ((new Carbon())->format('Y-m-d H:i:s') . "\n");
 
 $pdo = getDbConnection();
 
