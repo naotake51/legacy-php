@@ -1,21 +1,20 @@
 <?php
 require_once '../vendor/autoload.php';
-require_once '../lib/pdo.php';
+require_once '../lib/eloquent.php';
 
 use Carbon\Carbon;
+use Lib\Models\Sample;
 
 echo ((new Carbon())->format('Y-m-d H:i:s') . "\n");
 
-$pdo = getDbConnection();
-
 try {
     // samplesテーブルからデータ取得
-    $stmt = $pdo->query('SELECT id, name FROM samples');
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
+    $samples = Sample::get();
+} catch (\Exception $e) {
     echo "データベース接続エラー: " . $e->getMessage();
     exit;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -33,10 +32,10 @@ try {
             <th>ID</th>
             <th>Name</th>
         </tr>
-        <?php foreach ($rows as $row) { ?>
+        <?php foreach ($samples as $sample) { ?>
             <tr>
-                <td><?php echo $row['id'] ?></td>
-                <td><?php echo $row['name'] ?></td>
+                <td><?php echo $sample->id ?></td>
+                <td><?php echo $sample->name ?></td>
             </tr>
         <?php } ?>
     </table>

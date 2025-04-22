@@ -1,7 +1,9 @@
 {
   "name": "naotake51/legacy-php",
   "autoload": {
-    "psr-4": {}
+    "psr-4": {
+      "Lib\\": "lib/"
+    }
   },
   "authors": [
     {
@@ -9,6 +11,7 @@
     }
   ],
   "require": {
-    "nesbot/carbon": "^3.9"
+    "nesbot/carbon": "^3.9",
+    "illuminate/database": "^12.9"
   }
 }

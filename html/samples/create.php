@@ -1,21 +1,21 @@
 <?php
-require_once '../lib/pdo.php';
+require_once '../vendor/autoload.php';
+require_once '../lib/eloquent.php';
 
-$pdo = getDbConnection();
+use Lib\Models\Sample;
 
 try {
     // POSTデータ取得
     $name = $_POST['name'];
 
     // レコード挿入
-    $stmt = $pdo->prepare("INSERT INTO samples (name) VALUES (:name)");
-    $stmt->execute([
-        ':name' => $name,
+    Sample::create([
+        'name' => $name,
     ]);
 
     // リダイレクト
     header('Location: /samples/index.php');
     exit;
-} catch (PDOException $e) {
+} catch (\Exception $e) {
     echo "エラーが発生しました: " . $e->getMessage();
 }
