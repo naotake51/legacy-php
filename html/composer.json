@@ -12,6 +12,7 @@
   ],
   "require": {
     "nesbot/carbon": "^3.9",
-    "illuminate/database": "^12.9"
+    "illuminate/database": "^12.9",
+    "illuminate/view": "^12.9"
   }
 }
