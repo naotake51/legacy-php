@@ -1,9 +1,9 @@
 <?php
-require_once '../vendor/autoload.php';
-require_once '../lib/view.php';
+
+require_once '../lib/laravel_bootstrap.php';
 
 try {
-    echo $viewFactory->make('samples/new')->render();
+    echo view('samples/new')->render();
 } catch (\Exception $e) {
     echo "テンプレートレンダリングエラー: " . $e->getMessage();
     exit;

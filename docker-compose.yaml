@@ -7,8 +7,9 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./php//php.ini:/usr/local/etc/php/php.ini
+      - ./php/php.ini:/usr/local/etc/php/php.ini
       - ./html:/var/www/html
+      - ./php/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
     depends_on:
       - db
 

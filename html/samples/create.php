@@ -1,8 +1,8 @@
 <?php
-require_once '../vendor/autoload.php';
-require_once '../lib/eloquent.php';
 
-use Lib\Models\Sample;
+require_once '../lib/laravel_bootstrap.php';
+
+use App\Models\Sample;
 
 try {
     // POSTデータ取得
