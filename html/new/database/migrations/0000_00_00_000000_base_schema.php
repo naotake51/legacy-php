@@ -13,7 +13,7 @@ return new class extends Migration
         /**
          * マイグレーションをLaravelで管理する以前のスキーマファイル。ローカル環境以外で実行してはいけない。
          */
-        if (config("app.env") !== "local") {
+        if (config("app.env") !== "local" && config("app.env") !== "testing") {
             return;
         }
 
