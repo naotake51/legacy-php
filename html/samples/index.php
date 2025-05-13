@@ -2,10 +2,10 @@
 
 require_once '../lib/laravel_bootstrap.php';
 
-use Carbon\Carbon;
+// use Carbon\Carbon;
 use App\Models\Sample;
 
-echo ((new Carbon())->format('Y-m-d H:i:s') . "\n");
+// echo ((new Carbon())->format('Y-m-d H:i:s') . "\n");
 
 try {
     // samplesテーブルからデータ取得

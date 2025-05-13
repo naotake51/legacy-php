@@ -1,18 +1,16 @@
 import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+test('create sample', async ({ page }) => {
+  await page.goto('samples/index.php');
 
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
-});
+  // 新規作成ページへ移動
+  await page.getByRole('link', { name: '新規作成' }).click();
+  expect(await page.screenshot()).toMatchSnapshot();
 
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+  // 新規サンプルを作成
+  await page.getByRole('textbox', { name: '名前:' }).fill('テストサンプル');
+  await page.getByRole('button', { name: '作成' }).click();
 
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
-
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+  // 一覧ページへリダイレクトされて、新しいサンプルが表示されていることを確認
+  expect(await page.screenshot()).toMatchSnapshot();
 });
