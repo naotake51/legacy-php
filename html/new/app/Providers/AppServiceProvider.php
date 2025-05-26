@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Extensions\PHPSessionHandler;
+use App\Extensions\NamedSessionGuard;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,6 +29,21 @@ class AppServiceProvider extends ServiceProvider
          */
         Session::extend('php', function ($app) {
             return new PHPSessionHandler();
+        });
+
+        /**
+         * 既存のPHPが独自のキー名でログイン情報を保持しているので、Laravel側でもその値からログイン情報を取得できるようにする必要がある。
+         */
+        Auth::extend('named-session', function ($app, $name, array $config) {
+            return new NamedSessionGuard(
+                $name,
+                Auth::createUserProvider($config['provider']),
+                $app['session.store'],
+                null,
+                null,
+                true,
+                $config['key-name']
+            );
         });
     }
 }

@@ -40,6 +40,16 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'a' => [
+            'driver' => 'named-session',
+            'key-name' => 'a_user_email',
+            'provider' => 'a_users',
+        ],
+        'b' => [
+            'driver' => 'named-session',
+            'key-name' => 'b_user_email',
+            'provider' => 'b_users',
+        ],
     ],
 
     /*
@@ -60,15 +70,14 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'a_users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => App\Models\AUser::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'b_users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\BUser::class,
+        ],
     ],
 
     /*

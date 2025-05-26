@@ -1,7 +1,7 @@
 <?php
 
-require_once '../new/vendor/autoload.php';
-$app = require_once '../new/bootstrap/app.php';
+require_once __DIR__ . '/../new/vendor/autoload.php';
+$app = require_once __DIR__ . '/../new/bootstrap/app.php';
 
 use Illuminate\Contracts\Http\Kernel as HttpKernelContract;
 

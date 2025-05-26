@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.42, for Linux (aarch64)
+-- MySQL dump 10.13  Distrib 8.0.42, for Linux (x86_64)
 --
 -- Host: localhost    Database: myapp
 -- ------------------------------------------------------
@@ -16,6 +16,52 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `a_users`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `a_users` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `a_users`
+--
+
+LOCK TABLES `a_users` WRITE;
+/*!40000 ALTER TABLE `a_users` DISABLE KEYS */;
+INSERT INTO `a_users` VALUES (1,'a1@example.com'),(2,'a2@example.com');
+/*!40000 ALTER TABLE `a_users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `b_users`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `b_users` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `b_users`
+--
+
+LOCK TABLES `b_users` WRITE;
+/*!40000 ALTER TABLE `b_users` DISABLE KEYS */;
+INSERT INTO `b_users` VALUES (1,'b1@example.com'),(2,'b2@example.com');
+/*!40000 ALTER TABLE `b_users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `samples`
 --
 
@@ -27,6 +73,15 @@ CREATE TABLE `samples` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `samples`
+--
+
+LOCK TABLES `samples` WRITE;
+/*!40000 ALTER TABLE `samples` DISABLE KEYS */;
+/*!40000 ALTER TABLE `samples` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -37,4 +92,4 @@ CREATE TABLE `samples` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-25 17:48:59
+-- Dump completed on 2025-05-24  6:39:46
