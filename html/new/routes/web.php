@@ -41,7 +41,3 @@ Route::prefix('b')->middleware('auth:b')->group(function () {
         ], true) . "</pre>";
     });
 });
-
-Route::get('/', function () {
-    return redirect('../home.php');
-})->name('login');
