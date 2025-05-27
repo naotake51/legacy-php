@@ -1,21 +1,28 @@
 version: "3.8"
 
 services:
-  web:
-    build: ./php
-    container_name: lamp_web
+  nginx:
+    image: nginx:latest
+    container_name: nginx
     ports:
       - "8080:80"
     volumes:
+      - ./html:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+
+  php:
+    build: ./php
+    container_name: php
+    volumes:
       - ./php/php.ini:/usr/local/etc/php/php.ini
       - ./html:/var/www/html
-      - ./php/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
     depends_on:
       - db
-
   db:
     image: mysql:8.0
-    container_name: lamp_db
+    container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: myapp
@@ -29,7 +36,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: lamp_phpmyadmin
+    container_name: phpmyadmin
     ports:
       - "8081:80"
     environment:
